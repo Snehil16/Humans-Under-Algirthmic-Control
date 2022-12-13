@@ -1,0 +1,1 @@
+;(function(){console.log('CNE Interlude Player UNAVAILABLE for wired-uk on VERSO!');})();

@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* PROF NOTE: Try to force an animated scroll instead of a "jump" when navigation links are clicked */
+}
+
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  /* overflow: hidden; */
+  height: 100vh;
+  background-color: #2D4E4E;
+  font-family: sans-serif;
+}
+
+/* PROF NOTE: New container for all the marquee elements– on top of everything */
+#marqueeContainer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: +99;
+  /* PROF NOTE: Allows clicks to get passed "through" this element */
+  pointer-events: none;
+
+}
+
+#marqueeContainer>div {
+  /* PROF NOTE: A div to contain the individual marquees with a background color to visually "block" the content underneath it */
+  background-color: #2D4E4E;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#marqueeContainer h1 {
+  /* PROF NOTE: Removing any extra spacing from the marquees themselves */
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.scroller-horizontal {
+  width: max-content;
+  margin-bottom: 30px;
+  color: #D4DEDF;
+  -moz-animation: marquee-horizontal 15s linear infinite;
+  -webkit-animation: marquee-horizontal 15s linear infinite;
+  animation: marquee-horizontal 15s linear infinite;
+}
+
+.scroller-vertical {
+  height: max-content;
+  margin-bottom: 30px;
+  color: #D4DEDF;
+  -moz-animation: marquee-vertical 15s linear infinite;
+  -webkit-animation: marquee-vertical 15s linear infinite;
+  animation: marquee-vertical 15s linear infinite;
+}
+
+.scroller-vertical-right {
+  height: max-content;
+  margin-bottom: 30px;
+  color: #D4DEDF;
+  -moz-animation: marquee-vertical-right 15s linear infinite;
+  -webkit-animation: marquee-vertical-right 15s linear infinite;
+  animation: marquee-vertical-right 15s linear infinite;
+}
+
+@-moz-keyframes marquee-horizontal {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@-webkit-keyframes marquee-horizontal {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes marquee-horizontal {
+  0% {
+    -moz-transform: translateX(100vw);
+    -webkit-transform: translateX(100vw);
+    transform: translateX(100vw)
+  }
+
+  100% {
+    -moz-transform: translateX(-100vw);
+    -webkit-transform: translateX(-100vw);
+    transform: translateX(-100vw);
+  }
+}
+
+@-moz-keyframes marquee-vertical {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@-webkit-keyframes marquee-vertical {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes marquee-vertical {
+  0% {
+    -moz-transform: translateY(100vh);
+    -webkit-transform: translateY(100vh);
+    transform: translateY(100vh)
+  }
+
+  100% {
+    -moz-transform: translateY(-100vh);
+    -webkit-transform: translateY(-100vh);
+    transform: translateY(-100vh);
+  }
+}
+
+@-moz-keyframes marquee-vertical-right {
+  0% {
+    transform: translateY(100vh) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(-100vh) rotate(180deg);
+  }
+}
+
+@-webkit-keyframes marquee-vertical-right {
+  0% {
+    transform: translateY(100vh) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(-100vh) rotate(180deg);
+  }
+}
+
+@keyframes marquee-vertical-right {
+  0% {
+    -moz-transform: translateY(100vh) rotate(180deg);
+    -webkit-transform: translateY(100vh) rotate(180deg);
+    transform: translateY(100vh) rotate(180deg);
+  }
+
+  100% {
+    -moz-transform: translateY(-100vh) rotate(180deg);
+    -webkit-transform: translateY(-100vh) rotate(180deg);
+    transform: translateY(-100vh) rotate(180deg);
+  }
+}
+
+.mainContainer {
+  padding: 100px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  /* padding-top: 1.5vw; */
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  /* PROF NOTE: Pads the inside of the content, making room for the scrolling text around it */
+  padding: 100px;
+  /* overflow-y: scroll; */
+  /* overflow: hidden; */
+  background-color: #2D4E4E
+}
+
+.column1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* width: 5%; */
+  width: 100vh;
+  /* position: relative; */
+  /* height: 100%; */
+  overflow: hidden;
+}
+
+#image {
+  object-fit: cover;
+  width: 100%;
+  /* PROF NOTE: the container for our content is now the entire BODY, minus 100px on the top and 100px on the bottom, so we can use the CSS calc() feature to determine the size we need to perfectly fit the box */
+  /* height: 100%; */
+  height: calc(100vh - 200px);
+}
+
+.column2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* flex-wrap: wrap; */
+  /* width: 70%; */
+  width: 100%;
+  /* height: 100%; */
+  position: relative;
+  /* PROF NOTE: The only problem with this new approach is that the marquees now "cut off" the content, so it will cut off the border– I think it looks best to just remove this. */
+  /* border: solid; */
+  /* overflow-y: scroll; */
+  background-color: #6D8D8D;
+}
+
+.bottomHeading, .topHeading {
+  position: fixed;
+  width: 100vw;
+}
+
+.topHeading {
+  top: 0px;
+}
+
+.bottomHeading {
+  bottom: 0px;
+}
+
+#left, #right {
+  /* PROF NOTE: Flex and center text in 100px column */
+  display: flex;
+  width: 100px;
+  align-items: center;
+  /* PROF NOTE: Push the left and right marquee "above" the top and bottom, so they don't get cut off by the new background color divs */
+  z-index: +99;
+
+}
+
+#left {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  /* transform: rotate(-90deg); */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#right {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  /* transform: rotate(90deg); */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#footerBlocker {
+  position: absolute;
+  bottom: 0px;
+  width: 100vw;
+}
+
+.box {
+  width: 100%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #f00;
+  border: 2px solid orange;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover {
+  background: orange;
+  color: #fff;
+}
+
+.overlay {
+  position: absolute;
+  top: -300px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+  top: 0px;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: orange;
+  transform: rotate(90deg);
+}
+
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.dropbtn {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #021A1A;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #2D4E4E
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #04201f;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 1.5vw;
+  flex-direction: row;
+  justify-content: space-around;
+  /* PROF NOTE: Because we have the 100px tall marquee at the top, if we click your navigation links and jump directly to the block of content, it will be cut off– if we pad the top by 100px it will show up */
+  padding-top: 100px;
+}
+
+.text, .image {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+  position: relative;
+  align-items: center;
+}
+
+#stats {
+  display: flex;
+  width: 90%;
+  position: relative;
+}
+
+.header2 {
+  display: flex;
+  font-size: 40px;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.hometext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  font-size: 22px;
+  line-height: 1.5;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
